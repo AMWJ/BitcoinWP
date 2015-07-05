@@ -112,7 +112,9 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="APIKeys.json" />
+    <None Include="APIKeys.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ApplicationInsights.config" />
     <None Include="BitcoinWP_TemporaryKey.pfx" />
     <None Include="packages.config" />
