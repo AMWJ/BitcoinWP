@@ -8,6 +8,40 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <Hub>
+            <HubSection Header="Hey">
+                <DataTemplate>
+                    <Grid>
+                        <ListBox>
+                            <ListBox.Template>
+                                <ControlTemplate>
+                                    <TextBlock>
+                                        Yo
+                                    </TextBlock>
+                                </ControlTemplate>
+                            </ListBox.Template>
+                        </ListBox>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+            <HubSection Header="Hey There">
+                <DataTemplate>
+                    <Grid>
+                        <TextBlock>
+                            
+                        </TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+        </Hub>
     </Grid>
+    <Page.BottomAppBar>
+        <AppBar>
+            <Grid>
+                <AppBarButton Icon="Add">New</AppBarButton>
+                <AppBarButton Icon="ProtectedDocument">Lock</AppBarButton>
+                <AppBarButton Icon="Edit">Edit</AppBarButton>
+            </Grid>
+        </AppBar>
+    </Page.BottomAppBar>
 </Page>
