@@ -5,6 +5,10 @@ namespace BitcoinWP
 {
     public class BitcoinAddress
     {
+        public BitcoinAddress(string Address)
+        {
+            WIF = Address;
+        }
         public BitArray _bits;
         public byte[] bytes
         {
@@ -72,10 +76,6 @@ namespace BitcoinWP
             {
                 throw new NotImplementedException();
             }
-        }
-        public PublicKey GetAddress()
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -19,6 +19,12 @@ namespace BitcoinWP
         {
             throw new NotImplementedException();
         }
+
+        public double GetAmount()
+        {
+            throw new NotImplementedException();
+        }
+
         public BitcoinChange(IBitcoinTransaction Transaction, int Vout)
         {
             this.Transaction = Transaction;

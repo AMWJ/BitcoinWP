@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BitcoinWP
 {
-    public abstract class IAuthenticatedBitcoinWallet : IBitcoinWallet
+    class SampleWalletList:ObservableCollection<IBitcoinWallet>
     {
+        public SampleWalletList()
+        {
+        }
     }
 }

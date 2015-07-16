@@ -1,7 +1,8 @@
 ﻿namespace BitcoinWP
 {
-    public interface IBitcoinChange
+    interface IBitcoinChange
     {
+        double GetAmount();
         IBitcoinTransaction GetInputTransaction();
         IBitcoinTransaction GetOutputTransaction();
     }

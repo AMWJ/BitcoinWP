@@ -6,20 +6,20 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    <Page.Resources>
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Hub>
-            <HubSection Header="Hey">
+            <HubSection Header="Accounts" Name="AccountsOverview">
                 <DataTemplate>
                     <Grid>
-                        <ListBox>
-                            <ListBox.Template>
-                                <ControlTemplate>
-                                    <TextBlock>
-                                        Yo
+                        <ListBox ItemsSource="{Binding Source={StaticResource Accounts}}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="An Account">
                                     </TextBlock>
-                                </ControlTemplate>
-                            </ListBox.Template>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
                         </ListBox>
                     </Grid>
                 </DataTemplate>

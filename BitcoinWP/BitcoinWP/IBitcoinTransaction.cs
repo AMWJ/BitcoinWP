@@ -2,9 +2,13 @@
 
 namespace BitcoinWP
 {
-    public interface IBitcoinTransaction
+    public abstract class IBitcoinTransaction
     {
-        List<IBitcoinChange> Outputs();
-        List<IBitcoinChange> Inputs();
+        BitcoinAccount Sender;
+        BitcoinAccount Recipient;
+        List<IBitcoinChange> Outputs;
+        List<IBitcoinChange> Inputs;
+        IBlock Block;
+        double Fee;
     }
 }

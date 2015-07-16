@@ -14,7 +14,6 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using NBitcoin;
 using System.Collections.ObjectModel;
-using System.Windows;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -23,12 +22,16 @@ namespace BitcoinWP
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class ChooseAccountType : Page
     {
-        ObservableCollection<IAuthenticatedBitcoinWallet> Accounts;
-        public MainPage()
+        public ChooseAccountType()
         {
             this.InitializeComponent();
+        }
+
+        private void NewCoinbaseAccount(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(LoginWithCoinbase));
         }
     }
 }

@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace BitcoinWP
 {
-    interface IBitcoinAccount
+    public abstract class IBitcoinWallet
     {
-        BitcoinAddress GetAddress();
-        PublicKey GetPublicKey();
-        List<IBitcoinTransaction> Transactions();
+        abstract public Task<int> GetTotalBalance();
     }
 }

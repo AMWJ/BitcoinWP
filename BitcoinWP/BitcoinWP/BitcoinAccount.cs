@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BitcoinWP
 {
-    public abstract class IAuthenticatedBitcoinWallet : IBitcoinWallet
+    class BitcoinAccount
     {
+        string Name;
     }
 }
