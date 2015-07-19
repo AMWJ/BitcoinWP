@@ -1,4 +1,4 @@
-﻿#define NOTTESTLOGIN
+﻿#define NOTTESTLOGIN //Set this variable to run the app using a dev token provided by Coinbase. developer_access_token must be set in APIKeys.json if this variable is set.
 
 using System;
 using System.Collections.Generic;
@@ -26,6 +26,9 @@ using Newtonsoft.Json.Linq;
 
 namespace BitcoinWP
 {
+    /// <summary>
+    /// Page to use OAuth to login to user's Coinbase account.
+    /// </summary>
     public sealed partial class LoginWithCoinbase : Page
     {
         JToken coinbase;
@@ -58,14 +61,23 @@ namespace BitcoinWP
             Uri coinBaseAuthURL = new Uri(string.Format("{0}oauth/authorize?response_type=code&client_id={1}&redirect_uri={2}&scope=wallet:accounts:read",coinbase["url"], coinbase["client_id"], coinbase["redirect"]));
             LoginWebView.Navigate(coinBaseAuthURL);
         }
+        /// <summary>
+        /// Set the 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void LoginWebView_NavigationStarting(WebView sender, WebViewNavigationStartingEventArgs args)
         {
-            if (args.Uri.ToString().StartsWith(String.Format("{0}oauth/authorize/",coinbase["url"])))
+            if (args.Uri.ToString().StartsWith(String.Format("{0}oauth/authorize/",coinbase["url"]))) //This passes after the user has signed in, and the web view is navigated to JSON for the app to use.
             {
                 string authCode = args.Uri.ToString().Split('/').Last();
-                Login(authCode);
+                Login(authCode);    //Use the Authorization Code to grab an access key, and set up the user's wallet.
             }
         }
+        /// <summary>
+        /// Grabs the Coinbase account's Access and Refresh Tokens, and navigates to the wallet list.
+        /// </summary>
+        /// <param name="authCode">The Authorization Code provided by Coinbase.</param>
         async void Login(string authCode)
         {
             using (var client = new HttpClient())
@@ -90,11 +102,20 @@ namespace BitcoinWP
                 }
             }
         }
+        /// <summary>
+        /// Use the newly received Access Token to create a wallet. This method is for testing purposes.
+        /// </summary>
+        /// <param name="AccessToken">The Access Token given by Coinbase</param>
         public void NavigateToWallet(string AccessToken)
         {
             var wallet = new CoinbaseAccount(AccessToken);
             this.Frame.Navigate(typeof(WalletView), wallet);
         }
+        /// <summary>
+        /// Use both the newly received Access Token, as well as the Refresh Token, to create a wallet
+        /// </summary>
+        /// <param name="AccessToken">The Access Token given by Coinbase.</param>
+        /// <param name="RefreshToken">The Refresh Token given by Coinbase.</param>
         public void NavigateToWallet(string AccessToken, string RefreshToken)
         {
             var wallet = new CoinbaseAccount(AccessToken, RefreshToken);
